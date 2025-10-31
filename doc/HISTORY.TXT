@@ -1,0 +1,323 @@
+--> Polskie litery w standardzie Latin 2 (CP852).
+
+  ! - poprawiony bˆ¥d
+  # - nowa funkcja
+  % - funkcja zmieniona/usuni©ta
+  * - inne informacje
+
+
+
+--> MNC 1.0á8-1
+---------------
+
+  ! Poprawiono bˆ¥d w obliczaniu numeru dnia roku w latach przest©pnych.
+
+
+--> MNC 1.0á8
+---------------
+
+  # Tryb pracy Update: Dodano now¥ komend© 'DeleteDiff':
+
+      No  - Stare pliki r¢¾nicowe pozostan¥ na dysku.
+      Yes - Stare pliki r¢¾nicowe zostan¥ usuni©te po przetworzeniu.
+            Pliki te nie zostana usuni©te, je˜li nowostworzona nodelista
+            ma nieprawidˆow¥ sum© kontroln¥ (CRC).
+
+  # Tryb pracy Update: Dodano nowy parametr w linii poleceä '-b'.
+    Jego dziaˆanie odpowiada umieszczeniu w pliku kontrolnym polecenia
+    'DeleteDiff Yes'.
+
+  % Ilo˜† kasowanych flag przy u¾yciu komendy 'KillFlag' nie jest ju¾
+    ograniczona do 32. Pozostawiono ograniczenie dˆugo˜ci flagi do 5 znak¢w.
+
+  % Ilo˜† mo¾liwych do zdefiniowania flag przy u¾yciu komendy
+    'CoordinatorFlag' nie jest ju¾ ograniczona do 32.
+    Pozostawiono ograniczenie dˆugo˜ci flagi do 5 znak¢w.
+
+  # Dodano now¥ komend©: 'AddFlag'
+    Sˆu¾y ona do zdefiniowania flag w nodeli˜cie/pointli˜cie, kt¢re zostan¥
+    dodane do ka¾dej linii podczas przetwarzania.
+    Komenda ta mo¾e wyst¥pi† dowoln¥ ilo˜† razy, za ka¾dym razem definiuj¥c
+    jedn¥ flag© (max 5 znak¢w, nie licz¥c znacznika "U,").
+    Je˜li dana flaga wyst©puje ju¾ w linii, to nie zostanie dodana ponownie.
+
+    Domy˜lnie nowe flagi dodawane s¥ przed flag¥ specjaln¥ U. Aby dana flaga
+    zostaˆa dodana po fladze U, poprzed« j¥ prefixem "U,".
+
+    Przykˆady:
+
+      AddFlag ENC    - Nowa flaga ENC zostanie dodana przed flag¥ specjaln¥ U.
+      AddFlag ENC,U  - j/w
+
+      AddFlag U,ENC  - Nowa flaga ENC zostanie dodana po fladze specjalnej U.
+                       Je˜li flagi U nie byˆo w danej linii, to zostanie ona
+                       automatycznie dodana.
+
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w poszczeg¢lnych sekcjach. Flagi zdefiniowane w poszczeg¢lnych sekcjach
+    s¥ dodawane do listy flag, zdefiniowanych globalnie.
+
+  % Rozszerzono dziaˆanie komendy 'KillFlag'.
+    Domy˜lnie podana flaga kasowana jest niezale¾nie od tego, gdzie si©
+    znajduje. Aby usun¥† flag© tylko wtedy, gdy znajduje si© ona w linii przed
+    flag¥ specjaln¥ U, dodaj suffix ",U". Aby usun¥† flag© tylko wtedy, gdy
+    znajduje si© ona w linii za flag¥ specjaln¥ U, poprzed« j¥ prefixem "U,".
+
+    Przykˆady:
+
+      KillFlag ENC    - Zostan¥ usuni©te wszystkie flagi ENC.
+      KillFlag ENC,U  - Zostan¥ usuni©te tylko te flagi ENC, kt¢re znajduj¥
+                        si© przed flag¥ U.
+      KillFlag U,ENC  - Zostan¥ usuni©te tylko te flagi ENC, kt¢re znajduj¥
+                        si© po fladze U.
+
+  * Drobne zmiany kosmetyczne, gˆ¢wnie poprawki bˆ©dnych komunikat¢w.
+
+
+--> MNC 1.0á7
+---------------
+
+  ! W trybie pracy Update niepoprawnie rozpoznawane byˆy pliki r¢¾nicowe,
+    je˜li z linii poleceä, przy parametrze -d podano rozszerzenie "999".
+    Bˆ¥d usuni©to.
+
+
+--> MNC 1.0á6
+---------------
+
+  % Tryb pracy Sort: MNC u¾ywa teraz pami©ci XMS do przechowywania sortowanej
+    nodelisty. Powoduje to znaczne zwi©kszenie pr©dko˜ci pracy. Posortowanie
+    nodelisty zawieraj¥cej kilkadziesi¥t tysi©cy w©zˆ¢w nie stanowi ju¾
+    problemu i nie powinno trwa† dˆu¾ej ni¾ kilkadziesi¥t sekund. Dodatkowo
+    zlikwidowane zostaˆy wszelkie ograniczenia dotycz¥ce ilo˜ci
+    punkt¢w/w©zˆ¢w/hub¢w itd.
+    Je˜li nie jest dost©pna odpowiednia ilo˜† pami©ci XMS, u¾ytkownik zostanie
+    o tym poinformowany, a nodelista nie zostanie przetworzona.
+    MNC do posortowania nodelisty wymaga na og¢ˆ mniej-wi©cej 1.5 raza wi©cej
+    wolnej pami©ci XMS, ni¾ zajmuje caˆa nodelista. Zale¾y to od specyfiki
+    konkretnej nodelisty.
+
+  % Tryb pracy QSort zostaˆ zlikwidowany, poniewa¾ dziaˆaˆ on wolniej ni¾
+    poprawiona wersja trybu Sort, a w dodatku nie sortowaˆ nodelist
+    zawieraj¥cych punkty lub bardzo du¾o w©zˆ¢w.
+    Nadal mo¾na u¾ywa† nazwy trybu QSort, ale spowoduje automatyczne
+    uruchomienie trybu Sort.
+
+  ! Mogˆy wyst¥pi† kˆopoty z ilo˜ci¥ dost©pnej pami©ci w trybach pracy
+    Tree, Combine i QSort, je˜li dwa z nich byˆy one uruchamiane razem
+    (z jednego pliku kontrolnego, jeden po drugim). Bˆ¥d usuni©to.
+
+  % Tryb pracy Create: Dla ujednolicenia nazw komend w r¢¾nych trybach,
+    nazwa komendy ProcessFiles zostaˆa zmieniona na ProcessFile, mimo to nadal
+    mo¾na stosowa† star¥ nazw©.
+
+  % Tryb pracy Create: Ilo˜† przetwarzanych plik¢w segmentowych nie jest ju¾
+    ograniczona do 256. Mo¾na zdefiniowa† dowolnie du¾o nazw plik¢w
+    segmentowych, umieszczej¥c w pliku kontrolnym wi©cej linii ProcessFile.
+    W ka¾dej z tych linii mo¾na stosowa† znaki ? i * oraz poda† ˜cie¾k©
+    dost©pu (mo¾e by† r¢¾na dla r¢¾nych plik¢w).
+
+  % Tryb pracy Create: Domy˜lnie pliki wej˜ciowe *nie* s¥ sortowane. Aby
+    posortowa† pliki w/g nazw lub rozszerzeä, nale¾y umie˜ci† komend©
+    SortBy w pliku kontrolnym. Poprzednio warto˜ci¥ domy˜ln¥ byˆo sortowanie
+    w/g nazw.
+
+  ! MNC nie dziaˆaˆ prawidˆowo na komputerach z procesorem Pentium II.
+    Ta wersja powinna ju¾ funkcjonowa† poprawnie, jednak¾e nie zostaˆa
+    ona przetestowana na ¾adnym komputerze z tym procesorem, wi©c bardzo
+    prosz© o informacje.
+
+  % Tryb pracy Split: Ilo˜† plik¢w wej˜ciowych nie jest ju¾ ograniczona do
+    15. Mo¾na zdefiniowa† dowolnie du¾o plik¢w wej˜ciowych.
+
+  % Tryby pracy Create i Remake: Je˜li jako rozszerzenie pliku wynikowego
+    podasz 999, to program utworzy plik o rozszerzeniu, zawieraj¥cym aktualny
+    numer dnia roku.
+
+  % Tryby pracy Combine i Sort: Je˜li jako rozszerzenie pliku wynikowego
+    podasz 999, to program utworzy plik o rozszerzeniu identycznym jak
+    nodelista wej˜ciowa.
+
+
+--> MNC 1.0á5
+---------------
+
+  % Tryb pracy Tree: W©zˆy w tworzonym drzewie s¥ sortowane.
+
+  # Dodano nowy tryb pracy: QSort
+    Caˆkowicie nowy algorytm sortowania. Zlikwidowane zostaˆy wszelkie
+    ograniczenia dot. ilo˜ci w©zˆ¢w w strefach, regionach itd.
+    Caˆy proces przebiega szybciej ni¾ w trybie Sort, jednak¾e
+    niemo¾liwe jest posortowanie nodelist zawieraj¥cych bardzo du¾o w©zˆ¢w
+    (na og¢ˆ ponad 20000, warto˜† ta jest zale¾na od ilo˜ci wolnej pami©ci
+    konwencjonalnej) lub zawieraj¥cych punkty.
+    Nowy tryb pracy jest obsˆugiwany identycznie jak tryb Sort. Dost©pne s¥
+    dokˆadnie te same parametry z linii poleceä i komendy w pliku kontrolnym.
+
+  * MNC jest teraz skompilowany do pracy w trybie nakˆadkowym, dzi©ki
+    czemu zajmuje mniej miejsca w pami©ci. Mo¾e to mie† znaczenie w przypadku
+    tryb¢w pracy Tree, QSort i Combine. Dodatkowo program dziaˆa szybciej
+    je˜li dost©pna jest wolna pami©† EMS.
+
+
+--> MNC 1.0á4
+---------------
+
+  * Ta wersja jest zaopatrzona w polsk¥ dokumentacje.
+
+  # Dodano nowy tryb pracy: Stat
+    W tym trybie MNC tworzy plik ze statystyk¥ nodelisty.
+
+    W trybie tym dziaˆaj¥ nast©puj¥ce komendy:
+
+      ProcessFile  - nazwa nodelisty
+      CreateFile   - nazwa tworzonej statystyki
+      LeftMargin   - lewy margines tworzonej statystyki
+      ForceMode
+
+  # Dodano nowy tryb pracy: Tree
+    W tym trybie MNC tworzy plik ze drzewem routingu w sieci, stworzonym
+    na podstawie nodelisty.
+
+    W trybie tym dziaˆaj¥ nast©puj¥ce komendy:
+
+      ProcessFile  - nazwa nodelisty
+      CreateFile   - nazwa tworzonego drzewa
+      ForceMode
+
+  # Dodano nowy tryb pracy: Combine
+    W tym trybie MNC tworzy nodelist© z punktami (Binkley), korzystaj¥c
+    z 2 osobnych plik¢w: nodelisty i pointlisty.
+
+    W trybie tym dziaˆaj¥ nast©puj¥ce komendy:
+
+      ProcessNodelist  - nazwa nodelisty wej˜ciowej
+      ProcessPointlist - nazwa pointlisty wej˜ciowej
+
+      CreateFile, StartInfo, EndInfo, NetworkName, ForceMode, UseCurrentDate,
+      AddSemicolons, KillManyU, KillLastU, KillFlag
+
+  # Dodano now¥ komend©: 'Text_Nwplist'
+    Sˆu¾y ona do zdefiniowania tekstu, kt¢ry ma by† umieszczany w nagˆ¢wku
+    tworzonej nodelisty z punktami 'Nodelist with points'.
+
+    Komend© mo¾na stosowa† tylko w gˆ¢wnym pliku konfiguracyjnym.
+
+
+--> MNC 1.0á3
+---------------
+
+  % Zmieniono nazw© trybu pracy Convert na Split.
+    Nadal mo¾na u¾ywa† starej nazwy, jednak¾e nie gwaranuj©, ¾e nowsze wersje
+    programu b©d¥ akceptowaˆy stare instrukcje.
+
+  ! W trybie pracy Split (dawniej Convert) na pocz¥tku tworzonej nodelisty
+    byˆ umieszczany napis 'Pointlist', a na pocz¥tku pointlisty - 'Nodelist'.
+    Bˆ¥d usuni©to.
+
+  % W trybie pracy Split (dawniej Convert) przetwarzana nodelista z punktami
+    musiaˆa znajdowa† si© w katalogu bierz¥cym.
+    Teraz mo¾e ona znajdowa† si© w dowolnym katalogu.
+
+  % W trybie pracy Split (dawniej Convert) ilo˜† przetwarzanych plik¢w
+    wej˜ciowych nie mogˆa przekroczy† 255.
+    Warto˜† t¥ _obni¾ono_ do 15.
+
+  % Rozszerzono dziaˆanie komendy 'CoordinatorsOnly' w tybach pracy Remake
+    i Extract. Teraz mo¾liwe s¥ nast©puj¥ce warto˜ci tego parametru:
+
+        No     - Wszystkie w©zˆy (warto˜† domy˜lna)
+        Yes    - Koordynatorzy z koniecznymi hubami
+        Hubs   - Koordynatorzy ze wszystkimi hubami
+        NoHubs - Koordynatorzy bez hub¢w
+
+  # Dodano now¥ komend©: 'CoordinatorFlag'
+    Sˆu¾y ona do zdefiniowania flag w nodeli˜cie, kt¢re oznaczaj¥ ¾e dany
+    w©zeˆ jest jednym z koordynator¢w sieci. Poza tym za koordynator¢w
+    domy˜lnie s¥ uznawane wszystkie systemy 'Zone', 'Region' i 'Host'.
+    Komenda ta mo¾e wyst¥pi† maksymalnie 32 razy, za ka¾dym razem definiuj¥c
+    jedn¥ flag© (max 5 znak¢w).
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w sekcjach Remake oraz Extract. Flagi zdefiniowane w poszczeg¢lnych
+    sekcjach s¥ dodawane do listy flag, zdefiniowanych globalnie.
+
+  # Dodano now¥ komend©: 'AddSemicolons'
+    Czy na pocz¥tku linii w plikach tekstowych dodawanych na pocz¥ku i koäcu
+    tworzonej nodelisty/pointlisty dodawa† ˜rednik?
+    Mo¾liwe warto˜ci:
+
+        No   - —redniki nie b©d¥ nigdy dodawane.
+        Yes  - —redniki b©d¥ zawsze dodawane.
+        Auto - —redniki b©d¥ dodawane tylko wtedy, gdy na pocz¥tku linii
+               nie ma ju¾ ˜rednika. (warto˜† domy˜lna)
+
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w poszczeg¢lnych sekcjach.
+
+  # Dodano now¥ komend©: 'KillManyU'
+
+        No  - Linia w nodeli˜cie/pointli˜cie nie b©dzie zmieniana.
+              (warto˜† domy˜lna)
+        Yes - Je˜li w linii jest wi©cej ni¾ jedna flaga 'U', to pozostawiona
+              zostanie jedynie pierwsza. Pozostaˆe b©d¥ usuni©te.
+
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w poszczeg¢lnych sekcjach.
+
+  # Dodano now¥ komend©: 'SeparateFlagU'
+    Czy w tworzonej nodeli˜cie/pointli˜cie flaga 'U' ma zosta† oddzielona
+    od nast©pnej flagi przecinkiem?
+
+        No       - Przecinek po fladze 'U' b©dzie usuwany. (je˜li tam jest)
+        Yes      - Przecinek po fladze 'U' b©dzie dodawany. (je˜li go nie ma)
+        NoChange - Linia w nodeli˜cie nie b©dzie zmieniana.
+                   (warto˜† domy˜lna)
+
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w poszczeg¢lnych sekcjach.
+
+  # Dodano now¥ komend©: 'KillLastU'
+
+        No  - Linia w nodeli˜cie/pointli˜cie nie b©dzie zmieniana.
+              (warto˜† domy˜lna)
+        Yes - Je˜li na koäcu linii znajduje si© flaga 'U', to zostanie ona
+              usuni©ta.
+
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w poszczeg¢lnych sekcjach.
+
+  # Dodano now¥ komend©: 'KillFlag'
+    Sˆu¾y ona do zdefiniowania flag w nodeli˜cie/pointli˜cie, kt¢re zostan¥
+    usuni©te podczas przetwarzania.
+    Komenda ta mo¾e wyst¥pi† maksymalnie 32 razy, za ka¾dym razem definiuj¥c
+    jedn¥ flag© (max 5 znak¢w).
+
+    Komend© mo¾na stosowa† zar¢wno w gˆ¢wnym pliku konfiguracyjnym, jak i
+    w poszczeg¢lnych sekcjach. Flagi zdefiniowane w poszczeg¢lnych sekcjach
+    s¥ dodawane do listy flag, zdefiniowanych globalnie.
+
+  # Dodano nowy tryb pracy: Create
+    W tym trybie MNC tworzy now¥ nodelist©/pointlist©, korzystaj¥c z plik¢w
+    segmentowych, zawieraj¥cych poszczeg¢lne segmenty nodelisty/pointlisty.
+    Funkcja ta mo¾e by† wykorzystywana przez nodelistkeeper¢w do generowania
+    nowej nodelisty/pointlisty.
+
+    W trybie tym dziaˆaj¥ nast©puj¥ce komendy:
+
+      ProcessFiles - maska (z * i ?) plik¢w segmentowych
+      SortBy       - sortownie plik¢w wej˜ciowych {Name, Ext, No}
+      Pointlist    - czy tworzona jest pointlista? {Yes, No}
+
+      CreateFile, StartInfo, EndInfo, NetworkName, ForceMode, UseCurrentDate,
+      AddSemicolons, KillManyU, KillLastU, KillFlag
+
+  * Tryb pracy Combine niestety nie zostaˆ dodany do tej wersji programu.
+    Mimo ch©ci niestety zabrakˆo mi czasu na dokoäczenie tej cz©˜ci. :-(
+
+
+--> MNC 1.0á2
+---------------
+
+  * Pierwsza oficjalnie wydana wersja programu.
+
+---------------
