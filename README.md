@@ -1,5 +1,4 @@
-# mnc
-MiCHA Nodelist Converter
+# MiCHA Nodelist Converter
 
 Antyczny program, który kiedyś dawno dawno temu mógł być przydatny szerszemu gronu użytkowników sieci FTN.
 Zaimplementowałem w nim całe stado różnych przydatnych funkcji, służących do manipulowania nodelistami.
