@@ -1,0 +1,329 @@
+--> Polskie litery w standardzie Latin 2 (CP852).
+
+                           ÛÜ ÜÛ ß      Û
+                           Û ß Û Û Ûßßß ÛßßÜ ÛßßÛ
+                           ß   ß ß ßßßß ß  ß ßßß ß
+                    ÛÜ  Û         Û  ÜÜ  ßÛ  ß   ÜÜ  Ü
+                    Û ßÜÛ ÜßßÜ ÛßßÛ Ûßßß  Û  Û ßßÜÜ ßÛßß
+                    ß   ß  ßß  ßßßß  ßß  ßßß ß ßß     ßß
+                ÜßßÜ                  ÜÜ        Ü    ÜÜ
+                Û  Ü ÜßßÜ ÛßßÛ ßÜ Üß Ûßßß ÛßßÜ ßÛßß Ûßßß ÛßßÜ
+                 ßß   ßß  ß  ß   ß    ßß  ß      ßß  ßß  ß
+                                wersja: 1.0á7
+
+
+
+    Co to jest ?
+   --------------
+
+       MNC jest programem przydatnym dla w©zˆ¢w i punkt¢w sieci Fido
+  lub innej zgodnej ze standardem FTN. Umo¾liwia:
+
+
+       tryb pracy:     opis:
+
+
+       Create          Tworzenie nowej node/pointlisty, korzystaj¥c
+                       plik¢w, zawieraj¥cych poszczeg¢lne segmenty
+                       pliku wynikowego.
+
+       Update          Tworzenie nowej nodelisty, korzystaj¥c
+                       z pliku r¢¾nicowego (nodediff).
+
+       Extract         Tworzenie nodelisty, zawieraj¥cej jeden
+                       lub kilka wybranych region¢w, korzystaj¥c
+                       z nodelisty ˜wiatowej lub strefowej.
+
+       Remake          Tworzenie nowej nodelisty, korzystaj¥c
+                       z dowolnej istniej¥cej.
+                       (Usuni©cie komentarzy, dodanie nowych,
+                       obliczenie crc.)
+
+       Split           Tworzenie nodelisty i pointlisty, korzystaj¥c
+                       z nodelisty zawieraj¥cej w©zˆy wraz z ich
+                       punktami (Binkley).
+
+       Combine         Tworzenie nodelisty z punktami (Binkley),
+                       korzystaj¥c z nodelisty i pointlisty.
+
+       Sort            Sortowanie dowolnej istniej¥cej nodelisty.
+                       (Wymagana pami©† XMS.)
+
+       Stat            Generowanie statystyki nodelisty.
+
+       Tree            Tworznie graficznej (ascii) reprezentacji
+                       routingu w sieci (drzewo routingu).
+
+       Crc             Obliczanie i sprawdzanie poprawno˜ci sumy
+                       kontrolnej (crc) dowolnej nodelisty lub
+                       pointlisty.
+
+
+
+    Freeware
+   ----------
+
+       MNC jest programem freeware, co oznacza ¾e mo¾e by† bez ograniczeä
+   kopiowany i wykorzystywany bez ¾adnych opˆat rejestracyjnych, prosz©
+   jednak o wypeˆnienie formularza rejestracyjnego, zawartego w pliku
+   REGISTER.FRM i przysˆania go na jeden z moich adres¢w.
+
+
+
+    Instalacja
+   ------------
+
+       Program nie wymaga specjalnej instalacji. Mo¾na go umie˜ci†
+  w dowolnym katalogu. Polecam przegranie pliku MNC.EXE do katalogu,
+  znajduj¥cego si© na ˜cie¾ce poszukiwaä (path). W tym samym katalogu
+  powiniene˜ umie˜ci† plik konfiguracyjny (nie jest konieczny, jednak¾e
+  zalecam umieszczenie go).
+
+
+
+    Wymagania minimalne
+   ---------------------
+
+       MNC nie ma specjalnych wymagaä, konieczny jest jedynie komputer
+  z systemem operacyjnym MS-DOS lub kompatybilnym. Dodatkowo w trybie
+  pracy Sort wymagana jest dost©pna wolna pami©† XMS.
+
+       Program korzysta tak¾e z pami©ci EMS, je˜li jest dost©pna. Nie jest
+  ona jednak wymagana do poprawnej pracy. Dzi©ki niej niekt¢re operacje
+  przeprowadzane s¥ szybciej.
+
+
+
+    Informacje og¢lne
+   -------------------
+
+       Program nie wymaga konfiguracji, jednak isnieje mo¾liwo˜† zmiany
+  niekt¢rych domy˜lych parametr¢w. Zmiany te ustawia si© w pliku MNC.CFG,
+  kt¢ry nale¾y umie˜ci† w tym samym katalogu co program gˆ¢wny (MNC.EXE).
+  Jest to standardowy plik konfiguracyjny, kt¢ry mo¾na edydowa† przy
+  pomocy dowolnego edytora tekstowego. Istnieje r¢wnie¾ mo¾liwo˜† okre˜lenia
+  w linii poleceä nazwy pliku konfiguracyjnego (np. 'MOJA.CFG').
+
+       Wszelkie parametry dot. trybu pracy podaje si© w specjalnie utworzonym
+  pliku kontrolnym, zawieraj¥cym komendy niezb©dne dla programu. Mo¾esz
+  utworzy† dowoln¥ ilo˜† takich plik¢w i wywoˆywa† MNC z r¢¾nymi plikami
+  kontrolnymi zale¾nie od potrzeb.
+
+       Istnieje r¢wnie¾ mo¾liwo˜† okre˜lenia parametr¢w pracy bezpo˜rednio
+  w linii poleceä dosu, jednak¾e nie umo¾liwia to peˆnego wykorzystania
+  mo¾liwo˜ci programu.
+
+
+
+    Konfiguracja
+   --------------
+
+       Program MNC konfiguruje si© przy u¾yciu tekstowego pliku
+  konfiguracyjnego. Standardowo jest to plik 'MNC.CFG'. Dokˆadny opis
+  wszystkich parametr¢w znajduje si© w pliku 'MNC.CFG' dostarczonym wraz
+  programem MNC.
+
+       Pomijanie pliku konfiguracyjnego:
+
+            Wywoˆanie MNC z _pierwszym_ parametrem '!' spowoduje pomini©cie
+            pliku konfiguracyjnego i u¾ycie warto˜ci domy˜lnych.
+
+            Przykˆad: 'MNC ! sort -inodelist.999 -f'
+
+       U¾ycie innego pliku konfiguracyjnego:
+
+            Mo¾esz umie˜ci† konfiguracje w dowolnym innym pliku i wywoˆa† MNC
+            z _pierwszym_ parametrem '!nazwapliku'. Je˜li nie podasz
+            rozszerzenia program przyjmie domy˜lnie '.CFG'.
+
+
+            Np. 'MNC !INNA.CFG -update'
+
+
+
+    Wywoˆywanie programu przy u¾yciu plik¢w z parametrami
+   -------------------------------------------------------
+
+       Nazw© pliku z parametrami nale¾y umie˜ci† jako pierwszy parametr
+  w linii poleceä (ew. jako drugi, po oke˜leniu pliku konfiguracyjnego, patrz
+  wy¾ej), poprzedzaj¥c j¥ znakiem '-' (minus). Rozszerzenie pliku mo¾e by†
+  dowolne, jednak je˜li go nie podasz program przyjmie domy˜lnie '.CFG'.
+
+            Przykˆad: 'MNC -update' (wywoˆanie programu z plikiem kontrolnym
+                                     'update.cfg')
+
+       Skˆadnia plik¢w kontrolnych:
+
+            W ka¾dym pliku kontrolnym (pliku z parametrami) mo¾na umie˜ci†
+            dowoln¥ ilo˜† spacji, linii pustych oraz komentarzy. Ka¾dy
+            komentarz rozpoczyna si© znakiem ';' (˜rednik) i nie musi
+            by† umieszczany bezpo˜rednio na pocz¥tku linii.
+
+            Na pocz¥tku ka¾dego pliku kontrolnego nale¾y umie˜ci† nazw© trybu
+            pracy, kt¢rego chcemy u¾y†. Nazw© t¥ musisz uj¥† w nawiasy
+            kwadratowe.
+
+            Przykˆad: '[Sort]'
+
+            W kolejnych liniach nale¾y umie˜ci† komendy zale¾ne od trybu
+            pracy i potrzeb u¾ytkownika. Dokˆadny opis wszystkich komend
+            znajduje si© w pliku 'MODES.CFG' dostarczonym wraz programem MNC.
+
+
+            W pliku kontrolnym mo¾esz u¾ywa† parametr¢w podanych w linii
+            poleceä. Umo¾liwia to np. przetwa¾anie pliku podanego w linii
+            poleceä (czyli za ka¾dym razem innego), bez konieczno˜ci
+            zmieniania pliku kontrolnego.
+
+            Przykˆad: Je˜li wywoˆasz program np. tak: 'MNC -mode nodelist.123'
+                      to komenda 'ProcessFile %1' jest r¢wnoznaczna z komend¥
+                      'ProcessFile nodelist.123'
+
+            %1 odpowiada pierwszemu parametrowi _po_ nazwie pliku
+            kontrolnego. Kolejne parametry s¥ numerowane: %2, %3, %4 itd.
+
+
+            W pliku kontrolnym mo¾esz r¢wnie¾ u¾ywa† zmiennych systemowych
+            jak np. %COMSPEC%.
+
+            Przykˆad: Je˜li zmienna systemowa NAME jest r¢wna 'ABC.100' to
+                      komenda 'ProcessFile %NAME%' jest r¢wnoznaczna z komend¥
+                      'ProcessFile ABC.100'.
+
+
+            W jednym pliku kontrolnym mo¾esz umie˜li† wywoˆanie kilku tryb¢w
+            pracy programu MNC. Wystarczy, ¾e po umieszczeniu wszystkich
+            komend dot. jednego trybu umie˜cisz lini© z nazw¥ nowego trybu
+            w nawiasach kwadratowych. Umieszczenie linii z tekstem '[End]'
+            spowoduje zignorowanie wszyskiego, go znajduje si© dalej w pliku
+            kontrolnym.
+
+
+       Przykˆadowy plik kontrolny:
+
+          --------
+            [Sort]                     ; wywoˆanie trybu pracy 'sort'
+
+            ProcessFile  nodelist.999  ; okre˜lenie nazwy pliku do sortowania
+
+
+            [Extract]                  ; wywoˆanie trybu pracy 'extract'
+
+            ProcessFile  nodelist.999  ; okre˜lenie nazwy pliku, z kt¢rego
+                                       ; zostanie wyci©ty fragment
+
+            CreateFile   %1            ; u¾yto parametru z linii poleceä
+                                       ; musisz wywoˆa† pragram komend¥:
+                                       ; 'MNC -nazwa_trybu nazwa_pliku'
+                                       ; je˜li nie podasz nazwy pliku do
+                                       ; utworzenia MNC zasygnalizuje bˆ¥d
+                                       ; i zakoäczy prac©.
+
+            Region 2:48                ; okre˜lenie regionu, kt¢ry zostanie
+                                       ; wyci©ty z pliku wej˜ciowego
+
+            [End]             ; koniec pliku (ta komenda nie jest konieczna)
+          --------
+
+
+
+    Wywoˆywanie programu przy u¾yciu parametr¢w z linii poleceä
+   -------------------------------------------------------------
+
+       Istnieje mo¾liwo˜† wywoˆania programu bez pliku kontrolnego, podaj¥c
+    wszystkie potrzebne parametry w linii poleceä. W tym celu jako pierwszy
+    parametr (lub jako drugi, po okre˜leniu pliku konfiguracyjnego, patrz
+    wy¾ej) musisz poda† nazw© trybu pracy, a nat©pnie w dowolnej kolejno˜ci
+    parametry dodatkowe - ka¾dy z nich zaczyna si© od znaku '-' (minus) i
+    jest okre˜lony _jednoliterowym_ skr¢tem (np. -f = ForceMode). Je˜li
+    jaki˜ parametr wymaga dodatkowych danych (np. nazwy pliku), nale¾y
+    je poda† bezpo˜rednio po jednoliterowym skr¢cie, bez spacji (np.
+    -inodelist.123)
+
+       Aby uzyska† informacje o wszystkich dost©pnych parametrach wywoˆaj:
+   'MNC nazwa_trybu -?'.
+
+       UWAGA!
+       Wywoˆywanie programu z linii poleceä nie pozwala na wykorzystanie
+   wszystkich mo¾liwo˜ci MNC! Niekt¢re komendy nie si¥ dost©pne z linii
+   poleceä, np. w trybie Split nie mo¾na okre˜li† plik¢w tekstowych, kt¢re
+   zostan¥ dodane na pocz¥tku i koäcu tworzonej node- i pointlisty.
+
+
+       Wyj¥tek:
+       Tryb pracy 'Crc' mo¾na wywoˆywa† _jedynie_ z linii poleceä. W tym
+   trybie MNC liczy i sprawdza poprawno˜† crc dowolnej nodelisty. Nie wymagane
+   s¥ ¾adne parametry poza nazw¥ pliku, wi©c pisanie pliku kontrolnego
+   mija si© z celem. Nazw© nodelisty okre˜lamy jako drugi parametr zaraz po
+   nazwie trybu pracy 'Crc'. Mo¾na poda† kilka nazw oddzielonych spacjami.
+       Przykˆad: MNC Crc nodelist.123 point_48.123
+
+
+
+    Rozszerzenie '.999'
+   ---------------------
+
+       We wszystkich miejscach, gdzie MNC wymaga podania nazwy nodelisty
+   do odczytania, mo¾esz poda† rozszerzenie '.999'. Spowoduje to odczytanie
+   pliku o najwi©kszej liczbie zawartej w rozszerzeniu.
+
+
+
+    Pomoc
+   -------
+
+       Uruchamiaj¥c program z parametrem '-?' (bez cudzysˆowia) uzyskasz
+   pomoc na temat dost©pnych tryb¢w pracy. Aby uzyska† pomoc na temat
+   konkretnego trybu, uruchom program podaj¥c jako pierwszy parametr
+   nazw© trybu, a jako drugi '-?' (bez cudzysˆowia).
+
+   Przykˆady:
+
+   MNC -?          - Wy˜wietlenie pomocy og¢lnej
+   MNC Crc -?      - Wy˜wietlenie pomocy na temat trybu 'Crc'
+
+
+
+    Bˆ©dy
+   -------
+
+       Staraˆem si© wychwyci† i naprawi† wszystkie bˆ©dy, poniewa¾ jednak
+   nikt nie jest doskonaˆy, bardzo mo¾liwe ¾e niekt¢re przeoczyˆem. Wszelkie
+   informacje na temat ew. bˆ©d¢w prosz© kierowa† do mnie na m¢j adres
+   e-mail lub Fido.
+
+
+
+    Pliki
+   -------
+
+       W skˆad zestawu wchodz¥ nast©puj¥ce pliki:
+
+       MNC.EXE      - Gˆ¢wny plik programu. Jest to jedyny absolutnie
+                      konieczny plik.
+       MNC.CFG      - Plik tekstowy, w kt¢rym konfiguruje si© dodatkowe
+                      parametry programu. Plik ten jest zalecany, cho†
+                      nie konieczny.
+       MODES.CFG    - Szczeg¢ˆowy opis wszystkich mo¾liwych parametr¢w
+                      we wszystkich trybach pracy. Na podstawie informacji
+                      zawartych w tym pliku mo¾esz stworzy† sw¢j wˆasny
+                      plik z parametrami pracy.
+       *.CFG        - Zestaw przykˆadowych plik¢w z parametrami dla programu.
+       MNC.DOC      - Dokumentacja, kt¢r¥ wˆa˜nie czytasz.
+       HISTORY.TXT  - Informacje o zmianach, jakie zaszˆy w kolejnych
+                      wersjach programu.
+       REGISTER.FRM - Formularz rejestracyjny programu. Bardzo prosz© o
+                      wypeˆnienie go i wysˆanie na jeden z moich adres¢w.
+       SAMPLE.STA   - Przykˆadowa statystyka nodelisty stworzona prez MNC.
+       FILE_ID.DIZ  - Kr¢tka informacja o programie, do umieszczenia
+                      w li˜cie plik¢w bbs'u.
+
+
+
+    Autor
+   -------
+
+        Przemyslaw Kwiatkowski    FidoNet:
+               ul. Ptasia 2/58    2:480/127
+               00-138 Warszawa    E-Mail:
+                        Polska    micha@fidonet.org.pl
